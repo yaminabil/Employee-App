@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 
 export default function EmployeePage() {
@@ -9,7 +9,7 @@ export default function EmployeePage() {
   const getEmployee = async () => {
     try {
       const response = await axios.get(`http://localhost:8000/employees/${id}`);
-      setEmployee(response.data);
+      setEmployee(await response.data);
     } catch (err) {
       console.log(err);
     }
@@ -17,5 +17,20 @@ export default function EmployeePage() {
   useEffect(() => {
     getEmployee();
   }, []);
-  return <h1>this is the Employee page for {Employee.name} </h1>;
+  return (
+    <Fragment>
+      <div className="total">
+        <div className="part-one">
+          <img src={`${Employee.image}`} alt="hello" />
+        </div>
+        <div className="part-two">
+          <h2>{Employee.name}</h2>
+          <h4 className="title">{Employee.title}</h4>
+          <h4>{Employee.email}</h4>
+        </div>
+      </div>
+      <h3>phone number :{Employee.phoneNumber}</h3>
+      <h3>office number : {Employee.officeNumber}</h3>
+    </Fragment>
+  );
 }

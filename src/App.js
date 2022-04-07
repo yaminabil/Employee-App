@@ -6,7 +6,7 @@ import Company from "./pages/Company";
 import Contact from "./pages/Contact";
 import Nav from "./components/Nav";
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 
 //function get all the data from the back end
@@ -33,11 +33,14 @@ export default function App() {
 
   ////////////////////////<==================end
   return (
-    <Routes>
-      <Route path="/" element={<HomePage employees={employees} />} />
-      <Route path="/:id" element={<EmployeePage />} />
-      <Route path="/company" element={<Company />} />
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
+    <Fragment>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage employees={employees} />} />
+        <Route path="/:id" element={<EmployeePage />} />
+        <Route path="/company" element={<Company />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Fragment>
   );
 }

@@ -26,7 +26,6 @@ export default function HomePage({ employees }) {
 
   return (
     <Fragment>
-      <h1>this is the home page </h1>
       <div className="Table">
         <Header Title="Employees directory" />
         <Searchbar getEmployee={getEmployee} />
