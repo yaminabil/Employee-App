@@ -1,6 +1,7 @@
 import Employee from "./Employee";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 export default function EmployeesList({ employees }) {
   //////////////////////////////////
   // function of getting all the data
